@@ -1,0 +1,45 @@
+# AndroBlight Enhanced Backend Dependencies
+# =========================================
+
+# Core Flask
+flask>=2.3.0
+flask-cors>=4.0.0
+werkzeug>=2.3.0
+
+# Database & ORM
+flask-sqlalchemy>=3.1.0
+flask-migrate>=4.0.0
+
+# Authentication
+flask-jwt-extended>=4.6.0
+bcrypt>=4.1.0
+
+# ML & Image Processing
+tensorflow>=2.13.0
+numpy>=1.24.0
+opencv-python>=4.8.0
+
+# APK Analysis
+androguard>=3.4.0
+
+# Optional: VirusTotal API
+requests>=2.31.0
+
+# Play Store metadata scraping (for /predict-playstore)
+google-play-scraper>=1.2.7
+
+# Background task scheduler (Chunk 5: periodic rescanning)
+apscheduler>=3.10.0
+
+# Optional: PDF Report Generation
+reportlab>=4.0.0
+
+# Swagger / OpenAPI docs
+flask-swagger-ui>=4.11.1
+
+# Two-Factor Authentication (TOTP)
+pyotp>=2.9.0
+qrcode[pil]>=7.4.2
+
+# Development
+python-dotenv>=1.0.0

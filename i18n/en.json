@@ -1,0 +1,7 @@
+{
+    "rec_critical": "⚠️ DO NOT INSTALL - High malware probability detected",
+    "rec_high": "⚠️ Exercise extreme caution - Multiple risk indicators found",
+    "rec_medium": "⚠️ Review permissions carefully before installing",
+    "rec_low": "✅ This application appears safe to install",
+    "rec_critical_perms": "🔴 {count} critical permission(s) requested"
+}
