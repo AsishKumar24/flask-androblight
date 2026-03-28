@@ -19,11 +19,16 @@ from models.database import db, ThreatRule
 rules_bp = Blueprint("rules", __name__)
 
 
+def _current_user_id() -> int:
+    """JWT identity is stored as str(user.id); DB columns use int."""
+    return int(get_jwt_identity())
+
+
 @rules_bp.route("/rules", methods=["GET"])
 @jwt_required()
 def list_rules():
     """Return all active (and inactive) rules for the current user, plus global rules (user_id=NULL)."""
-    user_id = get_jwt_identity()
+    user_id = _current_user_id()
 
     rules = (
         ThreatRule.query.filter(
@@ -40,7 +45,7 @@ def list_rules():
 @jwt_required()
 def create_rule():
     """Create a new custom threat rule."""
-    user_id = get_jwt_identity()
+    user_id = _current_user_id()
     data = request.get_json(silent=True) or {}
 
     name = data.get("name", "").strip()
@@ -82,7 +87,7 @@ def create_rule():
 @jwt_required()
 def update_rule(rule_id):
     """Update a custom threat rule (owner only)."""
-    user_id = get_jwt_identity()
+    user_id = _current_user_id()
     rule = ThreatRule.query.get_or_404(rule_id)
 
     if rule.user_id != user_id:
@@ -112,7 +117,7 @@ def update_rule(rule_id):
 @jwt_required()
 def delete_rule(rule_id):
     """Delete a custom threat rule (owner only)."""
-    user_id = get_jwt_identity()
+    user_id = _current_user_id()
     rule = ThreatRule.query.get_or_404(rule_id)
 
     if rule.user_id != user_id:

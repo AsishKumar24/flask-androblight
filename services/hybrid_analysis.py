@@ -40,14 +40,14 @@ def check_hybrid_analysis(file_hash):
             threat_score = report.get("threat_score", 0)
             threat_level = report.get("threat_level", "")
 
+            verdict_norm = (verdict or "").strip().lower()
             return {
                 "engine": "Hybrid Analysis",
                 "found": True,
                 "verdict": verdict,
                 "threat_score": threat_score,
                 "threat_level": threat_level,
-                "malicious": verdict in ("malicious", "whitelisted")
-                and verdict != "whitelisted",
+                "malicious": verdict_norm == "malicious",
             }
         elif response.status_code == 404:
             return {"engine": "Hybrid Analysis", "found": False, "message": "Not found"}

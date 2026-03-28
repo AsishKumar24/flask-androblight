@@ -23,17 +23,23 @@ def check_virustotal(file_hash):
         if response.status_code == 200:
             data = response.json()
             stats = data.get('data', {}).get('attributes', {}).get('last_analysis_stats', {})
+            mal = stats.get('malicious', 0)
             return {
+                'engine': 'VirusTotal',
                 'found': True,
-                'malicious': stats.get('malicious', 0),
+                'malicious': mal,
                 'suspicious': stats.get('suspicious', 0),
                 'undetected': stats.get('undetected', 0),
                 'total_engines': sum(stats.values()),
-                'detection_ratio': f"{stats.get('malicious', 0)}/{sum(stats.values())}"
+                'detection_ratio': f"{mal}/{sum(stats.values()) or 1}",
             }
         elif response.status_code == 404:
-            return {'found': False, 'message': 'Not found in VirusTotal database'}
+            return {
+                'engine': 'VirusTotal',
+                'found': False,
+                'message': 'Not found in VirusTotal database',
+            }
         else:
-            return {'error': f'API error: {response.status_code}'}
+            return {'engine': 'VirusTotal', 'error': f'API error: {response.status_code}'}
     except Exception as e:
-        return {'error': str(e)}
+        return {'engine': 'VirusTotal', 'error': str(e)}

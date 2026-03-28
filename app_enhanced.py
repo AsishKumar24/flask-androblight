@@ -989,6 +989,10 @@ def get_recommendation(threat_level, ml_result, perm_analysis):
     """Generate recommendation based on analysis"""
     recommendations = []
 
+    has_custom_rule_hit = any(
+        c.get("custom_rule") for c in perm_analysis.get("suspicious_combos") or []
+    )
+
     if threat_level == "critical":
         recommendations.append("⚠️ DO NOT INSTALL - High malware probability detected")
     elif threat_level == "high":
@@ -998,11 +1002,26 @@ def get_recommendation(threat_level, ml_result, perm_analysis):
     elif threat_level == "medium":
         recommendations.append("⚠️ Review permissions carefully before installing")
     else:
-        recommendations.append("✅ This application appears safe to install")
+        if has_custom_rule_hit:
+            recommendations.append(
+                "⚠️ One of your threat rules matched — follow the rule-based recommendation below; do not install if that reflects your policy."
+            )
+        else:
+            recommendations.append("✅ This application appears safe to install")
 
     if perm_analysis.get("suspicious_combos"):
         for combo in perm_analysis["suspicious_combos"]:
-            recommendations.append(f"🚨 {combo['threat']}: {combo['description']}")
+            if combo.get("custom_rule"):
+                name = combo.get("rule_name") or combo.get("threat", "Custom rule")
+                perms = combo.get("permissions") or []
+                pattern = ", ".join(perms)
+                if len(pattern) > 160:
+                    pattern = pattern[:157] + "..."
+                recommendations.append(
+                    f'🚨 According to your threat rule "{name}": do not download or install this app — it matches permissions you flagged ({pattern}).'
+                )
+            else:
+                recommendations.append(f"🚨 {combo['threat']}: {combo['description']}")
 
     if len(perm_analysis.get("critical", [])) > 0:
         recommendations.append(

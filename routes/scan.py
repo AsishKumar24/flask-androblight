@@ -36,10 +36,18 @@ from services.certificate import extract_certificate_info
 from services.virustotal import check_virustotal
 from services.hybrid_analysis import check_hybrid_analysis
 from services.metadefender import check_metadefender
+from services.final_verdict import compute_final_verdict, verdict_summary_text
 
 import re
 
 scan_bp = Blueprint("scan", __name__)
+
+
+def _form_truthy(val):
+    """Multipart/form field truth: true, 1, yes, on."""
+    if val is None:
+        return False
+    return str(val).strip().lower() in ("true", "1", "yes", "on")
 
 
 def _get_optional_user_id():
@@ -86,92 +94,17 @@ def _get_model():
     return current_app.config.get("ML_MODEL")
 
 
-def _generate_mock_response(filename="demo.apk"):
-    """Generate mock response when model is not available"""
-    import random
-
-    is_malware = random.random() > 0.5
-    confidence = random.uniform(0.7, 0.95)
-
+def _scanner_status():
+    """Which external scanners are configured (API keys present)."""
     return {
-        "status": "success",
-        "demo_mode": True,
-        "metadata": {
-            "file_name": filename,
-            "file_size": random.randint(1000000, 50000000),
-            "file_size_readable": f"{random.randint(1, 50)} MB",
-            "sha256": hashlib.sha256(os.urandom(32)).hexdigest(),
-            "md5": hashlib.md5(os.urandom(16)).hexdigest(),
-            "scan_timestamp": datetime.now().isoformat(),
-            "package_name": f"com.{filename.replace('.apk', '')}",
-            "version_name": f"{random.randint(1, 5)}.{random.randint(0, 9)}.{random.randint(0, 9)}",
-            "main_activity": f".{filename.replace('.apk', '').title()}MainActivity",
-        },
-        "ml_detection": {
-            "label": "Malware" if is_malware else "Benign",
-            "confidence": confidence,
-            "malware_family": (
-                classify_malware_family(confidence) if is_malware else None
-            ),
-        },
-        "permission_analysis": {
-            "total_count": random.randint(5, 20),
-            "critical": (
-                [
-                    {
-                        "permission": "android.permission.READ_SMS",
-                        "description": "Read SMS",
-                        "risk": "Can access messages",
-                    }
-                ]
-                if is_malware
-                else []
-            ),
-            "high": [
-                {
-                    "permission": "android.permission.CAMERA",
-                    "description": "Camera access",
-                    "risk": "Can take photos",
-                }
-            ],
-            "medium": [
-                {
-                    "permission": "android.permission.INTERNET",
-                    "description": "Internet",
-                    "risk": "Can send data",
-                }
-            ],
-            "low": [],
-            "unknown": [],
-            "suspicious_combos": (
-                [{"threat": "SMS Stealer", "description": "Can intercept SMS"}]
-                if is_malware
-                else []
-            ),
-            "risk_score": (
-                random.randint(60, 90) if is_malware else random.randint(10, 40)
-            ),
-        },
-        "certificate": {
-            "signed": True,
-            "debug_signed": is_malware,
-            "fingerprint_sha256": hashlib.sha256(os.urandom(32)).hexdigest(),
-        },
-        "overall_score": (
-            random.randint(20, 40) if is_malware else random.randint(75, 95)
-        ),
-        "threat_level": "high" if is_malware else "low",
-        "recommendation": (
-            "Do not install this application"
-            if is_malware
-            else "This application appears safe"
-        ),
+        "virustotal": "enabled" if VIRUSTOTAL_ENABLED else "not_configured",
+        "hybrid_analysis": "enabled" if HYBRID_ANALYSIS_ENABLED else "not_configured",
+        "metadefender": "enabled" if METADEFENDER_ENABLED else "not_configured",
     }
 
 
 def _get_recommendation(threat_level, ml_result, perm_analysis, locale="en"):
-    """Generate recommendation based on analysis with locale support"""
-    # Load translations
+    """Generate ordered recommendations: primary stance, then evidence (combos, perms, ML)."""
     try:
         import json as _json
         import os as _os
@@ -190,31 +123,63 @@ def _get_recommendation(threat_level, ml_result, perm_analysis, locale="en"):
 
     recommendations = []
 
+    has_custom_rule_hit = any(
+        c.get("custom_rule") for c in perm_analysis.get("suspicious_combos") or []
+    )
+
     if threat_level == "critical":
         recommendations.append(
             t.get(
-                "rec_critical", "⚠️ DO NOT INSTALL - High malware probability detected"
+                "rec_critical", "⚠️ DO NOT INSTALL — severe risk indicators detected"
             )
         )
     elif threat_level == "high":
         recommendations.append(
             t.get(
                 "rec_high",
-                "⚠️ Exercise extreme caution - Multiple risk indicators found",
+                "⚠️ High risk — do not install unless you fully trust this source",
             )
         )
     elif threat_level == "medium":
         recommendations.append(
-            t.get("rec_medium", "⚠️ Review permissions carefully before installing")
+            t.get(
+                "rec_medium",
+                "⚠️ Elevated risk — review all permissions before installing",
+            )
         )
     else:
-        recommendations.append(
-            t.get("rec_low", "✅ This application appears safe to install")
-        )
+        if has_custom_rule_hit:
+            recommendations.append(
+                t.get(
+                    "rec_low_custom_rule",
+                    "⚠️ One of your threat rules matched — follow the rule-based recommendation below; do not install if that reflects your policy.",
+                )
+            )
+        else:
+            recommendations.append(
+                t.get(
+                    "rec_low",
+                    "✅ Lower risk based on current signals — still review permissions",
+                )
+            )
 
     if perm_analysis.get("suspicious_combos"):
         for combo in perm_analysis["suspicious_combos"]:
-            recommendations.append(f"🚨 {combo['threat']}: {combo['description']}")
+            if combo.get("custom_rule"):
+                name = combo.get("rule_name") or combo.get("threat", "Custom rule")
+                perms = combo.get("permissions") or []
+                pattern = ", ".join(perms)
+                if len(pattern) > 160:
+                    pattern = pattern[:157] + "..."
+                rec_template = t.get(
+                    "rec_custom_rule",
+                    '🚨 According to your threat rule "{name}": do not download or install this app — it matches permissions you flagged ({pattern}).',
+                )
+                recommendations.append(
+                    rec_template.replace("{name}", name).replace("{pattern}", pattern)
+                )
+            else:
+                recommendations.append(f"🚨 {combo['threat']}: {combo['description']}")
 
     if len(perm_analysis.get("critical", [])) > 0:
         count = len(perm_analysis["critical"])
@@ -223,7 +188,119 @@ def _get_recommendation(threat_level, ml_result, perm_analysis, locale="en"):
         )
         recommendations.append(template.replace("{count}", str(count)))
 
+    label = (ml_result.get("label") or "").strip()
+    if label == "Malware":
+        recommendations.append(
+            t.get(
+                "rec_ml_flagged",
+                "🧪 ML model classified this sample as malware (verify with other signals).",
+            )
+        )
+
     return recommendations
+
+
+def _generate_mock_response(filename="demo.apk"):
+    """
+    Deterministic demo payload for /batch-predict (same filename → same result).
+    Uses the same scoring / merge rules as /predict when the model is unavailable.
+    """
+    seed = int(hashlib.sha256(filename.encode()).hexdigest()[:8], 16)
+    is_malware = (seed % 100) < 48
+    confidence = round(0.72 + (seed % 23) / 100.0, 4)
+    meta_sha = hashlib.sha256(f"mock:{filename}".encode()).hexdigest()
+
+    perm_analysis = {
+        "total_count": 8 + (seed % 12),
+        "critical": (
+            [
+                {
+                    "permission": "android.permission.READ_SMS",
+                    "description": "Read SMS",
+                    "risk": "Can access messages",
+                }
+            ]
+            if is_malware
+            else []
+        ),
+        "high": [
+            {
+                "permission": "android.permission.CAMERA",
+                "description": "Camera access",
+                "risk": "Can take photos",
+            }
+        ],
+        "medium": [
+            {
+                "permission": "android.permission.INTERNET",
+                "description": "Internet",
+                "risk": "Can send data",
+            }
+        ],
+        "low": [],
+        "unknown": [],
+        "suspicious_combos": (
+            [{"threat": "SMS Stealer", "description": "Can intercept SMS"}]
+            if is_malware
+            else []
+        ),
+        "risk_score": min(100, (60 + (seed % 35)) if is_malware else (15 + (seed % 25))),
+    }
+    ml_result = {
+        "label": "Malware" if is_malware else "Benign",
+        "confidence": confidence,
+        "demo_mode": True,
+        "malware_family": (
+            classify_malware_family(confidence) if is_malware else None
+        ),
+    }
+
+    cert_info = {
+        "signed": True,
+        "debug_signed": is_malware,
+        "fingerprint_sha256": hashlib.sha256(f"fp:{filename}".encode()).hexdigest(),
+    }
+
+    final_verdict = compute_final_verdict(
+        ml_result,
+        perm_analysis,
+        {"dropper_detected": False, "is_rooted_device": False},
+        None,
+        None,
+        None,
+        cert_info,
+    )
+    threat_level = final_verdict["level"]
+    overall_score = final_verdict["safety_score"]
+
+    return {
+        "status": "success",
+        "demo_mode": True,
+        "metadata": {
+            "file_name": filename,
+            "file_size": 1000000 + (seed % 40000000),
+            "file_size_readable": f"{1 + (seed % 49)} MB",
+            "sha256": meta_sha,
+            "md5": hashlib.md5(f"mock:{filename}".encode()).hexdigest(),
+            "scan_timestamp": datetime.now().isoformat(),
+            "package_name": f"com.{filename.replace('.apk', '')}",
+            "version_name": f"{1 + (seed % 4)}.{(seed % 10)}.{(seed % 10)}",
+            "main_activity": f".{filename.replace('.apk', '').title()}MainActivity",
+        },
+        "ml_detection": ml_result,
+        "permission_analysis": perm_analysis,
+        "certificate": cert_info,
+        "overall_score": overall_score,
+        "threat_level": threat_level,
+        "final_verdict": final_verdict,
+        "recommendation": _get_recommendation(
+            threat_level, ml_result, perm_analysis, "en"
+        ),
+        "verdict_summary": verdict_summary_text(final_verdict, perm_analysis),
+        "scanner_status": _scanner_status(),
+        "virustotal": None,
+        "multi_engine_results": [],
+    }
 
 
 @scan_bp.route("/predict", methods=["POST"])
@@ -233,6 +310,7 @@ def predict():
 
     Request: multipart/form-data with 'file' field
              Optional: 'is_rooted' (string 'true'/'false')
+             Optional: 'force_rescan' ('true'/'1'/'yes') — bypass server scan_cache.json
     Response: Comprehensive scan result with all analyses
     """
     try:
@@ -267,14 +345,16 @@ def predict():
         apk_path = os.path.join(UPLOAD_FOLDER, filename)
         file.save(apk_path)
 
-        # Check cache
         file_hash = get_file_hash(apk_path)
+        force_rescan = _form_truthy(request.form.get("force_rescan"))
         cache = load_cache()
 
-        if file_hash in cache:
+        # Server-side dedupe by SHA-256; skip when client requests a fresh run
+        if not force_rescan and file_hash in cache:
             os.remove(apk_path)
-            cached = cache[file_hash]
+            cached = dict(cache[file_hash])
             cached["cached"] = True
+            cached["forced_rescan"] = False
             cached["device_info"] = device_info
             return jsonify(cached)
 
@@ -319,14 +399,13 @@ def predict():
                 ),
             }
         else:
-            # Demo mode
-            import random
-
-            is_malware = random.random() > 0.6
-            confidence = random.uniform(0.75, 0.95)
+            # Demo mode: deterministic from hash (same APK → same result; no random noise)
+            seed = int(file_hash[:8], 16)
+            is_malware = (seed % 100) < 18
+            confidence = 0.72 + (seed % 23) / 100.0
             ml_result = {
                 "label": "Malware" if is_malware else "Benign",
-                "confidence": confidence,
+                "confidence": round(confidence, 4),
                 "demo_mode": True,
                 "malware_family": (
                     classify_malware_family(confidence) if is_malware else None
@@ -344,30 +423,21 @@ def predict():
             r for r in [vt_result, ha_result, md_result] if r is not None
         ]
 
-        # Calculate overall score (0-100, higher is safer)
-        overall_score = 100
-        overall_score -= perm_analysis["risk_score"] * 0.3
-        if ml_result["label"] == "Malware":
-            overall_score -= ml_result["confidence"] * 40
-        if cert_info.get("debug_signed"):
-            overall_score -= 10
-        if vt_result and vt_result.get("malicious", 0) > 0:
-            overall_score -= vt_result["malicious"] * 2
-        # Factor in root status (rooted devices increase risk)
-        if is_rooted:
-            overall_score -= 10
-
-        overall_score = max(0, min(100, overall_score))
-
-        # Determine threat level
-        if overall_score < 30:
-            threat_level = "critical"
-        elif overall_score < 50:
-            threat_level = "high"
-        elif overall_score < 70:
-            threat_level = "medium"
-        else:
-            threat_level = "low"
+        behavior = {
+            "dropper_detected": False,
+            "is_rooted_device": is_rooted,
+        }
+        final_verdict = compute_final_verdict(
+            ml_result,
+            perm_analysis,
+            behavior,
+            vt_result,
+            ha_result,
+            md_result,
+            cert_info,
+        )
+        threat_level = final_verdict["level"]
+        overall_score = final_verdict["safety_score"]
 
         # Build response
         result = {
@@ -387,11 +457,15 @@ def predict():
             "virustotal": vt_result,
             "multi_engine_results": multi_engine_results,
             "device_info": device_info,
-            "overall_score": round(overall_score),
+            "overall_score": overall_score,
             "threat_level": threat_level,
+            "final_verdict": final_verdict,
             "recommendation": _get_recommendation(
                 threat_level, ml_result, perm_analysis, locale
             ),
+            "verdict_summary": verdict_summary_text(final_verdict, perm_analysis),
+            "scanner_status": _scanner_status(),
+            "forced_rescan": force_rescan,
         }
 
         # Cache result
@@ -433,6 +507,11 @@ def predict_playstore():
         data = request.get_json()
         if not data:
             return jsonify({"error": "No JSON data provided", "status": "error"}), 400
+
+        accept_lang = request.headers.get("Accept-Language", "en")
+        locale_ps = accept_lang.split(",")[0].split("-")[0].strip().lower()
+        if locale_ps not in ("en", "hi"):
+            locale_ps = "en"
 
         url = data.get("url")
         package = data.get("package")
@@ -485,66 +564,77 @@ def predict_playstore():
         # ── 2. Run permission analysis (reuse existing service) ───────────────
         perm_analysis = analyze_permissions(permission_strings)
 
-        # ── 3. Determine ML-style verdict from Play Store signals ─────────────
-        # We have no binary to run through the CNN; instead we construct a
-        # heuristic score from Play Store trust signals.
+        # ── 3. Play Store metadata (no APK binary — heuristic ML label + final verdict)
         installs = app_info.get("realInstalls") or app_info.get("minInstalls") or 0
-        score = app_info.get("score") or 0          # 0-5 rating
+        score = app_info.get("score") or 0
         ratings = app_info.get("ratings") or 0
         contains_ads = app_info.get("containsAds", False)
         in_app_purchases = app_info.get("offersIAP", False)
         developer = app_info.get("developer", "Unknown")
-        last_updated = app_info.get("updated")       # epoch ms
+        last_updated = app_info.get("updated")
 
-        # Trust signals → safety score (0-100, higher = safer)
-        overall_score = 60  # neutral baseline for Play Store apps
-
-        # Good signals
-        if installs >= 1_000_000:
-            overall_score += 10
-        if score >= 4.0 and ratings >= 1000:
-            overall_score += 10
-        if not contains_ads:
-            overall_score += 5
-
-        # Bad signals
-        overall_score -= perm_analysis["risk_score"] * 0.4   # permission risk
-        if len(perm_analysis.get("critical", [])) > 0:
-            overall_score -= len(perm_analysis["critical"]) * 3
-        if perm_analysis.get("suspicious_combos"):
-            overall_score -= len(perm_analysis["suspicious_combos"]) * 5
-
-        # Also check VirusTotal by package hash (if enabled)
+        pkg_hash = hashlib.sha256(package.encode()).hexdigest()
         vt_result = None
+        ha_result = None
+        md_result = None
         if VIRUSTOTAL_ENABLED:
-            pkg_hash = hashlib.sha256(package.encode()).hexdigest()
             vt_result = check_virustotal(pkg_hash)
-            if vt_result and vt_result.get("malicious", 0) > 0:
-                overall_score -= vt_result["malicious"] * 3
+        if HYBRID_ANALYSIS_ENABLED:
+            ha_result = check_hybrid_analysis(pkg_hash)
+        if METADEFENDER_ENABLED:
+            md_result = check_metadefender(pkg_hash)
 
-        overall_score = max(0, min(100, overall_score))
+        play_meta = {
+            "installs": installs,
+            "rating": score,
+            "ratings": ratings,
+            "contains_ads": contains_ads,
+        }
 
-        # Threat level
-        if overall_score < 30:
-            threat_level = "critical"
-        elif overall_score < 50:
-            threat_level = "high"
-        elif overall_score < 70:
-            threat_level = "medium"
-        else:
-            threat_level = "low"
+        neutral_ml = {
+            "label": "Likely Safe",
+            "confidence": 0.0,
+            "source": "play_store_metadata",
+            "note": "No APK binary available — verdict based on permissions & trust signals",
+        }
+        fv_pre = compute_final_verdict(
+            neutral_ml,
+            perm_analysis,
+            {},
+            vt_result,
+            ha_result,
+            md_result,
+            None,
+            play_store_metadata=play_meta,
+        )
+        is_suspicious = fv_pre["level"] in ("critical", "high") or fv_pre["safety_score"] < 50
 
-        # Heuristic ML-style result (no model — metadata-based)
-        is_suspicious = overall_score < 50
         ml_result = {
             "label": "Suspicious" if is_suspicious else "Likely Safe",
-            "confidence": round(abs(overall_score - 50) / 50, 2),
+            "confidence": round(abs(fv_pre["safety_score"] - 50) / 50, 2),
             "source": "play_store_metadata",
             "note": "No APK binary available — verdict based on permissions & trust signals",
         }
 
+        final_verdict = compute_final_verdict(
+            ml_result,
+            perm_analysis,
+            {},
+            vt_result,
+            ha_result,
+            md_result,
+            None,
+            play_store_metadata=play_meta,
+        )
+        threat_level = final_verdict["level"]
+        overall_score = final_verdict["safety_score"]
+
+        multi_engine_ps = [
+            r for r in [vt_result, ha_result, md_result] if r is not None
+        ]
+
         # ── 4. Build response ──────────────────────────────────────────────────
-        file_hash = hashlib.sha256(package.encode()).hexdigest()
+        file_hash = pkg_hash
 
         result = {
             "status": "success",
@@ -571,9 +661,15 @@ def predict_playstore():
             "permission_analysis": perm_analysis,
             "permissions_declared": permission_strings,
             "virustotal": vt_result,
-            "overall_score": round(overall_score),
+            "multi_engine_results": multi_engine_ps,
+            "overall_score": overall_score,
             "threat_level": threat_level,
-            "recommendation": _get_recommendation(threat_level, ml_result, perm_analysis),
+            "final_verdict": final_verdict,
+            "recommendation": _get_recommendation(
+                threat_level, ml_result, perm_analysis, locale_ps
+            ),
+            "verdict_summary": verdict_summary_text(final_verdict, perm_analysis),
+            "scanner_status": _scanner_status(),
         }
 
         # ── 5. Cache & persist ─────────────────────────────────────────────────

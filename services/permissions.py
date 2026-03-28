@@ -141,6 +141,12 @@ def analyze_permissions(permissions):
         "risk_score": 0,
     }
 
+    _unknown_entry = lambda p, desc: {
+        "permission": p,
+        "description": desc,
+        "risk": "Unreviewed — treat cautiously; may be new or uncommon on your Android version",
+    }
+
     for perm in permissions:
         if perm in DANGEROUS_PERMISSIONS:
             perm_info = DANGEROUS_PERMISSIONS[perm]
@@ -151,10 +157,17 @@ def analyze_permissions(permissions):
                 "risk": perm_info["risk"],
             }
             analysis[level].append(entry)
+        elif perm.startswith("android.permission."):
+            analysis["unknown"].append(
+                _unknown_entry(
+                    perm,
+                    "Not in our risk catalog (may be new API level or vendor-specific)",
+                )
+            )
         else:
-            # Check if it's a custom permission
-            if perm.startswith("android.permission."):
-                analysis["unknown"].append({"permission": perm})
+            analysis["unknown"].append(
+                _unknown_entry(perm, "App-defined custom permission — scope depends on the developer")
+            )
 
     # Check for suspicious combinations
     for combo in SUSPICIOUS_COMBOS:
@@ -183,6 +196,7 @@ def analyze_permissions(permissions):
                         "permissions": rule_perms,
                         "custom_rule": True,
                         "rule_id": rule.id,
+                        "rule_name": rule.name,
                     }
                 )
     except Exception:
@@ -195,6 +209,7 @@ def analyze_permissions(permissions):
     score += len(analysis["high"]) * 10
     score += len(analysis["medium"]) * 5
     score += len(analysis["low"]) * 1
+    score += len(analysis["unknown"]) * 2
     score += len(analysis["suspicious_combos"]) * 25
 
     analysis["risk_score"] = min(100, score)

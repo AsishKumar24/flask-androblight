@@ -3,5 +3,7 @@
     "rec_high": "⚠️ Exercise extreme caution - Multiple risk indicators found",
     "rec_medium": "⚠️ Review permissions carefully before installing",
     "rec_low": "✅ This application appears safe to install",
+    "rec_low_custom_rule": "⚠️ One of your threat rules matched — follow the rule-based recommendation below; do not install if that reflects your policy.",
+    "rec_custom_rule": "🚨 According to your threat rule \"{name}\": do not download or install this app — it matches permissions you flagged ({pattern}).",
     "rec_critical_perms": "🔴 {count} critical permission(s) requested"
 }

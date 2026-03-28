@@ -1,420 +1,69 @@
 {
-  "1dfce4269081693f10350dbabd26991a59d7c2bb81f870de54e5b113f4785b7a": {
+  "1b6c2c43556c76a6b12c22eaf753b559aa53e1ee68d2ad8a1d97b2ed0adc9cd3": {
     "status": "success",
     "metadata": {
-      "file_name": "F-Droid.apk",
-      "file_size": 12426276,
-      "file_size_readable": "11.85 MB",
-      "sha256": "1dfce4269081693f10350dbabd26991a59d7c2bb81f870de54e5b113f4785b7a",
-      "md5": "8e44c488dc211b4c46cd1206ad598731",
-      "scan_timestamp": "2026-02-02T14:45:12.511035"
+      "file_name": "APKPure_v3.20.6403_apkpure.com.apk",
+      "file_size": 25355475,
+      "file_size_readable": "24.18 MB",
+      "sha256": "1b6c2c43556c76a6b12c22eaf753b559aa53e1ee68d2ad8a1d97b2ed0adc9cd3",
+      "md5": "a9b4c4a2466ef29451f42b9babe2a4f9",
+      "scan_timestamp": "2026-03-29T01:51:55.065336",
+      "package_name": "com.apkpure.aegon",
+      "version_name": "3.20.6403"
     },
     "manifest": {
-      "package_name": null,
-      "permissions_count": 0
-    },
-    "ml_detection": {
-      "label": "Malware",
-      "confidence": 0.9285856485366821,
-      "raw_score": 0.9285856485366821,
-      "malware_family": {
-        "family": "ransomware",
-        "description": "Encrypts files and demands payment"
-      }
-    },
-    "permission_analysis": {
-      "total_count": 0,
-      "critical": [],
-      "high": [],
-      "medium": [],
-      "low": [],
-      "unknown": [],
-      "suspicious_combos": [],
-      "risk_score": 0
-    },
-    "certificate": {
-      "signed": true,
-      "issuer": null,
-      "subject": null,
-      "valid_from": null,
-      "valid_to": null,
-      "fingerprint_sha256": "92e00f3587478b6caf6a2e4419420d1b3587efd42197e007059ba5e6b77ee464",
-      "debug_signed": false
-    },
-    "virustotal": null,
-    "overall_score": 63,
-    "threat_level": "medium",
-    "recommendation": [
-      "\u26a0\ufe0f Review permissions carefully before installing"
-    ]
-  },
-  "89fb6689d36f2f7acc030a0d101427d339f301df35602485c05cf2477f91f18d": {
-    "status": "success",
-    "metadata": {
-      "file_name": "Google_Chrome_v138.0.7204.179_APKPure_Installer.apk",
-      "file_size": 5828850,
-      "file_size_readable": "5.56 MB",
-      "sha256": "89fb6689d36f2f7acc030a0d101427d339f301df35602485c05cf2477f91f18d",
-      "md5": "0b2b020582447e2153f97cb6cfba6adb",
-      "scan_timestamp": "2026-02-02T14:49:11.271480"
-    },
-    "manifest": {
-      "package_name": null,
-      "permissions_count": 0
+      "package_name": "com.apkpure.aegon",
+      "permissions_count": 45
     },
     "ml_detection": {
       "label": "Benign",
-      "confidence": 0.7216391563415527,
-      "raw_score": 0.27836084365844727,
+      "confidence": 0.6696126461029053,
+      "raw_score": 0.3303873836994171,
       "malware_family": null
     },
     "permission_analysis": {
-      "total_count": 0,
-      "critical": [],
-      "high": [],
-      "medium": [],
-      "low": [],
-      "unknown": [],
-      "suspicious_combos": [],
-      "risk_score": 0
-    },
-    "certificate": {
-      "signed": true,
-      "issuer": null,
-      "subject": null,
-      "valid_from": null,
-      "valid_to": null,
-      "fingerprint_sha256": "97d06c08a4d7774f82e6024f4f60df20cce38d3ba7aa24e6c47075e6ba204240",
-      "debug_signed": false
-    },
-    "virustotal": null,
-    "overall_score": 100,
-    "threat_level": "low",
-    "recommendation": [
-      "\u2705 This application appears safe to install"
-    ]
-  },
-  "ab1184bb3ba772f76a3947c4646103d46b9c0a1cde788124244ab83bd881ac7a": {
-    "status": "success",
-    "metadata": {
-      "file_name": "Google_Chrome_v145.0.7632.45_APKPure_Installer.apk",
-      "file_size": 5828850,
-      "file_size_readable": "5.56 MB",
-      "sha256": "ab1184bb3ba772f76a3947c4646103d46b9c0a1cde788124244ab83bd881ac7a",
-      "md5": "4f1a5ee9efb861da1bcee1b25ffe9ea7",
-      "scan_timestamp": "2026-02-13T13:00:41.886851",
-      "package_name": null,
-      "version_name": null
-    },
-    "manifest": {
-      "package_name": null,
-      "permissions_count": 0
-    },
-    "ml_detection": {
-      "label": "Benign",
-      "confidence": 0.7216391563415527,
-      "raw_score": 0.27836087346076965,
-      "malware_family": null
-    },
-    "permission_analysis": {
-      "total_count": 0,
-      "critical": [],
-      "high": [],
-      "medium": [],
-      "low": [],
-      "unknown": [],
-      "suspicious_combos": [],
-      "risk_score": 0
-    },
-    "certificate": {
-      "signed": true,
-      "issuer": null,
-      "subject": null,
-      "valid_from": null,
-      "valid_to": null,
-      "fingerprint_sha256": "97d06c08a4d7774f82e6024f4f60df20cce38d3ba7aa24e6c47075e6ba204240",
-      "debug_signed": false
-    },
-    "virustotal": null,
-    "overall_score": 100,
-    "threat_level": "low",
-    "recommendation": [
-      "\u2705 This application appears safe to install"
-    ]
-  },
-  "3d2504151bf04fa569b98373747458a44084b58e46c3ba319cf012d079f55205": {
-    "status": "success",
-    "demo_mode": true,
-    "metadata": {
-      "file_name": "com.nautilus.RealCricket3D.apk",
-      "file_size": 29397532,
-      "file_size_readable": "14 MB",
-      "sha256": "3d2504151bf04fa569b98373747458a44084b58e46c3ba319cf012d079f55205",
-      "md5": "5801340509ad5d5d4336067cdc84e166",
-      "scan_timestamp": "2026-03-27T17:26:43.575615",
-      "package_name": "com.nautilus.RealCricket3D",
-      "version_name": "1.2.7",
-      "main_activity": ".Com.Nautilus.Realcricket3DMainActivity"
-    },
-    "ml_detection": {
-      "label": "Benign",
-      "confidence": 0.84962055088924,
-      "malware_family": null
-    },
-    "permission_analysis": {
-      "total_count": 7,
-      "critical": [],
+      "total_count": 45,
+      "critical": [
+        {
+          "permission": "android.permission.REQUEST_INSTALL_PACKAGES",
+          "description": "Install apps",
+          "risk": "Can install additional malware"
+        }
+      ],
       "high": [
         {
+          "permission": "android.permission.ACCESS_FINE_LOCATION",
+          "description": "Precise location access",
+          "risk": "Can track user location precisely"
+        },
+        {
           "permission": "android.permission.CAMERA",
-          "description": "Camera access",
-          "risk": "Can take photos"
+          "description": "Access camera",
+          "risk": "Can take photos/videos without consent"
         }
       ],
       "medium": [
         {
-          "permission": "android.permission.INTERNET",
-          "description": "Internet",
-          "risk": "Can send data"
-        }
-      ],
-      "low": [],
-      "unknown": [],
-      "suspicious_combos": [],
-      "risk_score": 40
-    },
-    "certificate": {
-      "signed": true,
-      "debug_signed": false,
-      "fingerprint_sha256": "9e40bbd5b3aacb576dddc2fb1c4a933f05af59e5b463e79b6a38dae5b8b6e478"
-    },
-    "overall_score": 87,
-    "threat_level": "low",
-    "recommendation": "This application appears safe"
-  },
-  "37ae1483fae6c529a4d3891c19e24476d259a30997d0ce039fccd1fe2a192512": {
-    "status": "success",
-    "demo_mode": true,
-    "metadata": {
-      "file_name": "com.nautilus.RealCricket3D.apk",
-      "file_size": 45214866,
-      "file_size_readable": "46 MB",
-      "sha256": "37ae1483fae6c529a4d3891c19e24476d259a30997d0ce039fccd1fe2a192512",
-      "md5": "06b81907c7fb0270eb980679a2619385",
-      "scan_timestamp": "2026-03-27T17:26:51.341643",
-      "package_name": "com.nautilus.RealCricket3D",
-      "version_name": "5.5.7",
-      "main_activity": ".Com.Nautilus.Realcricket3DMainActivity"
-    },
-    "ml_detection": {
-      "label": "Benign",
-      "confidence": 0.8455403673720832,
-      "malware_family": null
-    },
-    "permission_analysis": {
-      "total_count": 14,
-      "critical": [],
-      "high": [
+          "permission": "android.permission.ACCESS_COARSE_LOCATION",
+          "description": "Approximate location",
+          "risk": "Can track user location approximately"
+        },
         {
-          "permission": "android.permission.CAMERA",
-          "description": "Camera access",
-          "risk": "Can take photos"
-        }
-      ],
-      "medium": [
+          "permission": "android.permission.WRITE_EXTERNAL_STORAGE",
+          "description": "Write storage",
+          "risk": "Can modify files on device"
+        },
         {
-          "permission": "android.permission.INTERNET",
-          "description": "Internet",
-          "risk": "Can send data"
-        }
-      ],
-      "low": [],
-      "unknown": [],
-      "suspicious_combos": [],
-      "risk_score": 28
-    },
-    "certificate": {
-      "signed": true,
-      "debug_signed": false,
-      "fingerprint_sha256": "f91992ce530ef445d48a42e22e718fc97c958f6c894433c9688afe2e39333290"
-    },
-    "overall_score": 95,
-    "threat_level": "low",
-    "recommendation": "This application appears safe"
-  },
-  "92b72ca12b5a5094f0ebe91bf1ccffd929cb52c9f0096b3a95e266a06ccf0aae": {
-    "status": "success",
-    "demo_mode": true,
-    "metadata": {
-      "file_name": "com.nautilus.RealCricket3D.apk",
-      "file_size": 24458904,
-      "file_size_readable": "46 MB",
-      "sha256": "92b72ca12b5a5094f0ebe91bf1ccffd929cb52c9f0096b3a95e266a06ccf0aae",
-      "md5": "dbf5e6e4bd22c0b6280af083acb31631",
-      "scan_timestamp": "2026-03-27T17:27:09.549214",
-      "package_name": "com.nautilus.RealCricket3D",
-      "version_name": "4.1.5",
-      "main_activity": ".Com.Nautilus.Realcricket3DMainActivity"
-    },
-    "ml_detection": {
-      "label": "Benign",
-      "confidence": 0.9429284831312895,
-      "malware_family": null
-    },
-    "permission_analysis": {
-      "total_count": 18,
-      "critical": [],
-      "high": [
+          "permission": "android.permission.READ_EXTERNAL_STORAGE",
+          "description": "Read storage",
+          "risk": "Can access files on device"
+        },
         {
-          "permission": "android.permission.CAMERA",
-          "description": "Camera access",
-          "risk": "Can take photos"
+          "permission": "android.permission.RECEIVE_BOOT_COMPLETED",
+          "description": "Run at startup",
+          "risk": "Can run automatically when device boots"
         }
       ],
-      "medium": [
-        {
-          "permission": "android.permission.INTERNET",
-          "description": "Internet",
-          "risk": "Can send data"
-        }
-      ],
-      "low": [],
-      "unknown": [],
-      "suspicious_combos": [],
-      "risk_score": 15
-    },
-    "certificate": {
-      "signed": true,
-      "debug_signed": false,
-      "fingerprint_sha256": "4d71dcfea12b55e80bf2af538b3bcbbf69b6e01e47d86dbbab4ebff9370b6c0b"
-    },
-    "overall_score": 85,
-    "threat_level": "low",
-    "recommendation": "This application appears safe"
-  },
-  "ff600cabd7ebb98caecf79a808e3fef085539959a3a588a530b5214e00aac64f": {
-    "status": "success",
-    "scan_type": "playstore",
-    "metadata": {
-      "package_name": "com.nautilus.RealCricket3D",
-      "app_name": "Real Cricket\u2122 20",
-      "developer": "Nautilus Mobile",
-      "version_name": "6.1",
-      "installs": 81341561,
-      "rating": 3.9634616,
-      "rating_count": 1654781,
-      "contains_ads": true,
-      "in_app_purchases": true,
-      "last_updated": 1759998312,
-      "play_store_url": "https://play.google.com/store/apps/details?id=com.nautilus.RealCricket3D",
-      "icon_url": "https://play-lh.googleusercontent.com/0THEI8zLKM-rxY6IxE-1z59ChVuWaZrSecWs-wpdXcWSgXqewrL9H1s-ONRxnWbxBQ",
-      "genre": "Sports",
-      "content_rating": "Everyone",
-      "sha256": "ff600cabd7ebb98caecf79a808e3fef085539959a3a588a530b5214e00aac64f",
-      "scan_timestamp": "2026-03-27T18:03:08.730693"
-    },
-    "ml_detection": {
-      "label": "Likely Safe",
-      "confidence": 0.4,
-      "source": "play_store_metadata",
-      "note": "No APK binary available \u2014 verdict based on permissions & trust signals"
-    },
-    "permission_analysis": {
-      "total_count": 0,
-      "critical": [],
-      "high": [],
-      "medium": [],
-      "low": [],
-      "unknown": [],
-      "suspicious_combos": [],
-      "risk_score": 0
-    },
-    "permissions_declared": [],
-    "virustotal": {
-      "found": false,
-      "message": "Not found in VirusTotal database"
-    },
-    "overall_score": 70,
-    "threat_level": "low",
-    "recommendation": [
-      "\u2705 This application appears safe to install"
-    ]
-  },
-  "1b707952995acc2fa233c12791f7f15b9add64d7b787d89aa78aac435ba25f32": {
-    "status": "success",
-    "scan_type": "playstore",
-    "metadata": {
-      "package_name": "com.instagram.android",
-      "app_name": "Instagram",
-      "developer": "Instagram",
-      "version_name": "Varies with device",
-      "installs": 7349735911,
-      "rating": 4.007144,
-      "rating_count": 167059726,
-      "contains_ads": true,
-      "in_app_purchases": true,
-      "last_updated": 1774286185,
-      "play_store_url": "https://play.google.com/store/apps/details?id=com.instagram.android",
-      "icon_url": "https://play-lh.googleusercontent.com/VRMWkE5p3CkWhJs6nv-9ZsLAs1QOg5ob1_3qg-rckwYW7yp1fMrYZqnEFpk0IoVP4LM",
-      "genre": "Social",
-      "content_rating": "Teen",
-      "sha256": "1b707952995acc2fa233c12791f7f15b9add64d7b787d89aa78aac435ba25f32",
-      "scan_timestamp": "2026-03-28T15:35:24.896118"
-    },
-    "ml_detection": {
-      "label": "Likely Safe",
-      "confidence": 0.6,
-      "source": "play_store_metadata",
-      "note": "No APK binary available \u2014 verdict based on permissions & trust signals"
-    },
-    "permission_analysis": {
-      "total_count": 0,
-      "critical": [],
-      "high": [],
-      "medium": [],
-      "low": [],
-      "unknown": [],
-      "suspicious_combos": [],
-      "risk_score": 0
-    },
-    "permissions_declared": [],
-    "virustotal": {
-      "found": false,
-      "message": "Not found in VirusTotal database"
-    },
-    "overall_score": 80,
-    "threat_level": "low",
-    "recommendation": [
-      "\u2705 This application appears safe to install"
-    ]
-  },
-  "5b7248065a2149784c9145b53ffe9e465023f9d0627badb9aef529a2a82da3d4": {
-    "status": "success",
-    "metadata": {
-      "file_name": "Words_Episode_2.8_APKPure.apk",
-      "file_size": 12723467,
-      "file_size_readable": "12.13 MB",
-      "sha256": "5b7248065a2149784c9145b53ffe9e465023f9d0627badb9aef529a2a82da3d4",
-      "md5": "c6ec8c09d3d51e95e2df3cad99c9ba5b",
-      "scan_timestamp": "2026-03-28T15:43:38.786324",
-      "package_name": "com.escape.puzzle.prison.bank.steal.money.fun",
-      "version_name": "2.8"
-    },
-    "manifest": {
-      "package_name": "com.escape.puzzle.prison.bank.steal.money.fun",
-      "permissions_count": 10
-    },
-    "ml_detection": {
-      "label": "Benign",
-      "confidence": 0.6938915252685547,
-      "raw_score": 0.3061084747314453,
-      "malware_family": null
-    },
-    "permission_analysis": {
-      "total_count": 10,
-      "critical": [],
-      "high": [],
-      "medium": [],
       "low": [
         {
           "permission": "android.permission.INTERNET",
@@ -424,26 +73,212 @@
       ],
       "unknown": [
         {
-          "permission": "android.permission.ACCESS_NETWORK_STATE"
+          "permission": "com.google.android.gms.permission.AD_ID",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
         },
         {
-          "permission": "android.permission.ACCESS_ADSERVICES_TOPICS"
+          "permission": "android.permission.ACCESS_NETWORK_STATE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
         },
         {
-          "permission": "android.permission.ACCESS_ADSERVICES_ATTRIBUTION"
+          "permission": "android.permission.GET_PACKAGE_SIZE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
         },
         {
-          "permission": "android.permission.ACCESS_ADSERVICES_AD_ID"
+          "permission": "android.permission.ACCESS_WIFI_STATE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
         },
         {
-          "permission": "android.permission.WAKE_LOCK"
+          "permission": "android.permission.CHANGE_WIFI_STATE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
         },
         {
-          "permission": "android.permission.FOREGROUND_SERVICE"
+          "permission": "com.android.launcher.permission.INSTALL_SHORTCUT",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.MOUNT_UNMOUNT_FILESYSTEMS",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.GET_INTENT_SENDER_INTENT",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.REORDER_TASKS",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.FOREGROUND_SERVICE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "oppo.permission.OPPO_COMPONENT_SAFE",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.POST_NOTIFICATIONS",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.NOTIFICATION_SEND",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.ACCESS_NOTIFICATION_POLICY",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.WAKE_LOCK",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "com.android.launcher.permission.UNINSTALL_SHORTCUT",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.MANAGE_EXTERNAL_STORAGE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "com.apkpure.aegon.permission.PROCESS_PUSH_MSG",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "com.apkpure.aegon.permission.PUSH_PROVIDER",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.BROADCAST_STICKY",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "com.huawei.android.launcher.permission.CHANGE_BADGE",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "com.vivo.notification.permission.BADGE_ICON",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "com.tencent.assistant.permission.A_PERMISSION",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.READ_CALENDAR",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.WRITE_CALENDAR",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.ACCESS_ORIENTATION",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "com.apkpure.aegon.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "com.google.android.c2dm.permission.RECEIVE",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.REQUEST_DELETE_PACKAGES",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.SCHEDULE_EXACT_ALARM",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.USE_FULL_SCREEN_INTENT",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.EXPAND_STATUS_BAR",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.CHANGE_NETWORK_STATE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "com.apkpure.aegon.permission.TDOS_DIAGNOSE_BROADCAST",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.BLUETOOTH",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
         }
       ],
-      "suspicious_combos": [],
-      "risk_score": 1
+      "suspicious_combos": [
+        {
+          "threat": "Dropper",
+          "description": "Can download and install additional malware",
+          "permissions": [
+            "android.permission.REQUEST_INSTALL_PACKAGES",
+            "android.permission.INTERNET"
+          ]
+        },
+        {
+          "threat": "camera",
+          "description": "camera",
+          "permissions": [
+            "android.permission.CAMERA"
+          ],
+          "custom_rule": true,
+          "rule_id": 1,
+          "rule_name": "camera"
+        }
+      ],
+      "risk_score": 100
     },
     "certificate": {
       "signed": true,
@@ -451,25 +286,27 @@
       "subject": null,
       "valid_from": null,
       "valid_to": null,
-      "fingerprint_sha256": "c7412ff6bc43c9e02ae95f1bbd183cda75338e1ca92855db947de32d6bb42202",
+      "fingerprint_sha256": "ad99bf62e62fd1c78da865c915a67d519e5c2ba63fcec2bbc2a338a56862c756",
       "debug_signed": false
     },
     "virustotal": {
+      "engine": "VirusTotal",
       "found": true,
-      "malicious": 1,
+      "malicious": 0,
       "suspicious": 0,
-      "undetected": 66,
-      "total_engines": 76,
-      "detection_ratio": "1/76"
+      "undetected": 67,
+      "total_engines": 75,
+      "detection_ratio": "0/75"
     },
     "multi_engine_results": [
       {
+        "engine": "VirusTotal",
         "found": true,
-        "malicious": 1,
+        "malicious": 0,
         "suspicious": 0,
-        "undetected": 66,
-        "total_engines": 76,
-        "detection_ratio": "1/76"
+        "undetected": 67,
+        "total_engines": 75,
+        "detection_ratio": "0/75"
       },
       {
         "engine": "Hybrid Analysis",
@@ -485,11 +322,60 @@
       "device_model": "Google sdk_gphone16k_arm64",
       "android_version": "17"
     },
-    "overall_score": 98,
-    "threat_level": "low",
+    "overall_score": 25,
+    "threat_level": "critical",
+    "final_verdict": {
+      "level": "critical",
+      "risk_score": 66,
+      "safety_score": 25,
+      "reasons": [
+        {
+          "code": "ML_PRIMARY",
+          "label": "AI risk assessment",
+          "detail": "Model: Benign \u2192 normalized risk 15/100 (40% of aggregate)."
+        },
+        {
+          "code": "AGGREGATE",
+          "label": "Combined risk",
+          "detail": "Final risk 66/100 = 40%\u00d7AI + 60%\u00d7supporting (supporting raw 100/100)."
+        },
+        {
+          "code": "PERMISSION_RISK",
+          "label": "Permission & pattern risk",
+          "detail": "Catalog + combo score 100/100."
+        },
+        {
+          "code": "UNKNOWN_PERMISSIONS",
+          "label": "Unreviewed permissions",
+          "detail": "37 permission(s) outside our risk catalog."
+        },
+        {
+          "code": "CUSTOM_RULE",
+          "label": "Custom threat rule matched",
+          "detail": "camera: camera"
+        }
+      ],
+      "ml_signal": {
+        "label": "Benign",
+        "confidence": 0.6696126461029053,
+        "role": "primary",
+        "ml_risk_score": 15.0,
+        "note": "Primary AI signal (40% weight in the final risk score)."
+      }
+    },
     "recommendation": [
-      "\u2705 This application appears safe to install"
-    ]
+      "\u26a0\ufe0f DO NOT INSTALL - High malware probability detected",
+      "\ud83d\udea8 Dropper: Can download and install additional malware",
+      "\ud83d\udea8 According to your threat rule \"camera\": do not download or install this app \u2014 it matches permissions you flagged (android.permission.CAMERA).",
+      "\ud83d\udd34 1 critical permission(s) requested"
+    ],
+    "verdict_summary": "Final risk: CRITICAL \u2014 do not install. 37 permission(s) not in our catalog. Based on AI assessment (40%) plus supporting signals (60%); critical overrides apply.",
+    "scanner_status": {
+      "virustotal": "enabled",
+      "hybrid_analysis": "enabled",
+      "metadefender": "enabled"
+    },
+    "forced_rescan": true
   },
   "53cbdab5a6a67ecc1d4683186219f1cb9441d0580aaf0232454e1cc0eb08ae5c": {
     "status": "success",
@@ -499,7 +385,7 @@
       "file_size_readable": "4.46 MB",
       "sha256": "53cbdab5a6a67ecc1d4683186219f1cb9441d0580aaf0232454e1cc0eb08ae5c",
       "md5": "3e63ee39787ba27e0f6eb47f07c7b470",
-      "scan_timestamp": "2026-03-28T16:32:06.260785",
+      "scan_timestamp": "2026-03-29T01:50:39.918990",
       "package_name": "com.innovativegames.knockdown",
       "version_name": "4.1.6"
     },
@@ -533,14 +419,28 @@
       ],
       "unknown": [
         {
-          "permission": "android.permission.ACCESS_NETWORK_STATE"
+          "permission": "android.permission.ACCESS_NETWORK_STATE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
         },
         {
-          "permission": "android.permission.WAKE_LOCK"
+          "permission": "android.permission.WAKE_LOCK",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "com.google.android.c2dm.permission.RECEIVE",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
         }
       ],
       "suspicious_combos": [],
-      "risk_score": 6
+      "risk_score": 14
     },
     "certificate": {
       "signed": true,
@@ -552,6 +452,7 @@
       "debug_signed": false
     },
     "virustotal": {
+      "engine": "VirusTotal",
       "found": true,
       "malicious": 0,
       "suspicious": 0,
@@ -561,6 +462,7 @@
     },
     "multi_engine_results": [
       {
+        "engine": "VirusTotal",
         "found": true,
         "malicious": 0,
         "suspicious": 0,
@@ -582,10 +484,153 @@
       "device_model": "Google sdk_gphone16k_arm64",
       "android_version": "17"
     },
-    "overall_score": 98,
+    "overall_score": 81,
     "threat_level": "low",
+    "final_verdict": {
+      "level": "low",
+      "risk_score": 19,
+      "safety_score": 81,
+      "reasons": [
+        {
+          "code": "ML_PRIMARY",
+          "label": "AI risk assessment",
+          "detail": "Model: Benign \u2192 normalized risk 14/100 (40% of aggregate)."
+        },
+        {
+          "code": "AGGREGATE",
+          "label": "Combined risk",
+          "detail": "Final risk 19/100 = 40%\u00d7AI + 60%\u00d7supporting (supporting raw 23/100)."
+        },
+        {
+          "code": "UNKNOWN_PERMISSIONS",
+          "label": "Unreviewed permissions",
+          "detail": "4 permission(s) outside our risk catalog."
+        }
+      ],
+      "ml_signal": {
+        "label": "Benign",
+        "confidence": 0.701416015625,
+        "role": "primary",
+        "ml_risk_score": 14.5,
+        "note": "Primary AI signal (40% weight in the final risk score)."
+      }
+    },
     "recommendation": [
       "\u2705 This application appears safe to install"
-    ]
+    ],
+    "verdict_summary": "Final risk: Lower from combined signals. 4 permission(s) not in our catalog. AI assessment (40%) plus supporting analysis (60%).",
+    "scanner_status": {
+      "virustotal": "enabled",
+      "hybrid_analysis": "enabled",
+      "metadefender": "enabled"
+    },
+    "forced_rescan": true
+  },
+  "04a1f5ddc4e1c6d0f4b29c1a47e8f0dbf56d3303995bdce4d6e0311afeb4d001": {
+    "status": "success",
+    "scan_type": "playstore",
+    "metadata": {
+      "package_name": "com.whatsapp",
+      "app_name": "WhatsApp Messenger",
+      "developer": "WhatsApp LLC",
+      "version_name": "Varies with device",
+      "installs": 11772457807,
+      "rating": 4.709583,
+      "rating_count": 232095509,
+      "contains_ads": false,
+      "in_app_purchases": true,
+      "last_updated": 1774341230,
+      "play_store_url": "https://play.google.com/store/apps/details?id=com.whatsapp",
+      "icon_url": "https://play-lh.googleusercontent.com/bYtqbOcTYOlgc6gqZ2rwb8lptHuwlNE75zYJu6Bn076-hTmvd96HH-6v7S0YUAAJXoJN",
+      "genre": "Communication",
+      "content_rating": "Everyone",
+      "sha256": "04a1f5ddc4e1c6d0f4b29c1a47e8f0dbf56d3303995bdce4d6e0311afeb4d001",
+      "scan_timestamp": "2026-03-29T01:52:33.010849"
+    },
+    "ml_detection": {
+      "label": "Likely Safe",
+      "confidence": 0.8,
+      "source": "play_store_metadata",
+      "note": "No APK binary available \u2014 verdict based on permissions & trust signals"
+    },
+    "permission_analysis": {
+      "total_count": 0,
+      "critical": [],
+      "high": [],
+      "medium": [],
+      "low": [],
+      "unknown": [],
+      "suspicious_combos": [],
+      "risk_score": 0
+    },
+    "permissions_declared": [],
+    "virustotal": {
+      "engine": "VirusTotal",
+      "found": true,
+      "malicious": 0,
+      "suspicious": 0,
+      "undetected": 55,
+      "total_engines": 55,
+      "detection_ratio": "0/55"
+    },
+    "multi_engine_results": [
+      {
+        "engine": "VirusTotal",
+        "found": true,
+        "malicious": 0,
+        "suspicious": 0,
+        "undetected": 55,
+        "total_engines": 55,
+        "detection_ratio": "0/55"
+      },
+      {
+        "engine": "Hybrid Analysis",
+        "error": "API error: 400"
+      },
+      {
+        "engine": "MetaDefender",
+        "error": "API error: 401"
+      }
+    ],
+    "overall_score": 95,
+    "threat_level": "low",
+    "final_verdict": {
+      "level": "low",
+      "risk_score": 5,
+      "safety_score": 95,
+      "reasons": [
+        {
+          "code": "ML_PRIMARY",
+          "label": "AI risk assessment",
+          "detail": "Model: Likely Safe \u2192 normalized risk 13/100 (40% of aggregate)."
+        },
+        {
+          "code": "AGGREGATE",
+          "label": "Combined risk",
+          "detail": "Final risk 5/100 = 40%\u00d7AI + 60%\u00d7supporting (supporting raw 0/100)."
+        },
+        {
+          "code": "PLAY_STORE_TRUST",
+          "label": "Play Store trust signals",
+          "detail": "Reduced risk contribution from installs/ratings/ads profile."
+        }
+      ],
+      "ml_signal": {
+        "label": "Likely Safe",
+        "confidence": 0.8,
+        "role": "primary",
+        "ml_risk_score": 13.0,
+        "note": "Heuristic from Play Store metadata (40% weight); no APK binary was scanned."
+      }
+    },
+    "recommendation": [
+      "\u2705 This application appears safe to install"
+    ],
+    "verdict_summary": "Final risk: Lower from combined signals. AI assessment (40%) plus supporting analysis (60%).",
+    "scanner_status": {
+      "virustotal": "enabled",
+      "hybrid_analysis": "enabled",
+      "metadefender": "enabled"
+    }
   }
 }
