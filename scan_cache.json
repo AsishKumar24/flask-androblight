@@ -776,5 +776,738 @@
       "metadefender": "enabled"
     },
     "forced_rescan": false
+  },
+  "1b707952995acc2fa233c12791f7f15b9add64d7b787d89aa78aac435ba25f32": {
+    "status": "success",
+    "scan_type": "playstore",
+    "metadata": {
+      "package_name": "com.instagram.android",
+      "app_name": "Instagram",
+      "developer": "Instagram",
+      "version_name": "Varies with device",
+      "installs": 7358905239,
+      "rating": 4.0055857,
+      "rating_count": 167118836,
+      "contains_ads": true,
+      "in_app_purchases": true,
+      "last_updated": 1774892400,
+      "play_store_url": "https://play.google.com/store/apps/details?id=com.instagram.android",
+      "icon_url": "https://play-lh.googleusercontent.com/VRMWkE5p3CkWhJs6nv-9ZsLAs1QOg5ob1_3qg-rckwYW7yp1fMrYZqnEFpk0IoVP4LM",
+      "genre": "Social",
+      "content_rating": "Teen",
+      "sha256": "1b707952995acc2fa233c12791f7f15b9add64d7b787d89aa78aac435ba25f32",
+      "scan_timestamp": "2026-04-01T15:34:06.982449"
+    },
+    "ml_detection": {
+      "label": "Likely Safe",
+      "confidence": 0.8,
+      "source": "play_store_metadata",
+      "note": "No APK binary available \u2014 verdict based on permissions & trust signals"
+    },
+    "permission_analysis": {
+      "total_count": 0,
+      "critical": [],
+      "high": [],
+      "medium": [],
+      "low": [],
+      "unknown": [],
+      "suspicious_combos": [],
+      "risk_score": 0
+    },
+    "permissions_declared": [],
+    "virustotal": {
+      "engine": "VirusTotal",
+      "found": false,
+      "message": "Not found in VirusTotal database"
+    },
+    "multi_engine_results": [
+      {
+        "engine": "VirusTotal",
+        "found": false,
+        "message": "Not found in VirusTotal database"
+      },
+      {
+        "engine": "Hybrid Analysis",
+        "error": "API error: 400"
+      },
+      {
+        "engine": "MetaDefender",
+        "error": "API error: 401"
+      }
+    ],
+    "overall_score": 95,
+    "threat_level": "low",
+    "final_verdict": {
+      "level": "low",
+      "risk_score": 5,
+      "safety_score": 95,
+      "reasons": [
+        {
+          "code": "ML_PRIMARY",
+          "label": "AI risk assessment",
+          "detail": "Model: Likely Safe \u2192 normalized risk 13/100 (40% of aggregate)."
+        },
+        {
+          "code": "AGGREGATE",
+          "label": "Combined risk",
+          "detail": "Final risk 5/100 = 40%\u00d7AI + 60%\u00d7supporting (supporting raw 0/100)."
+        },
+        {
+          "code": "PLAY_STORE_TRUST",
+          "label": "Play Store trust signals",
+          "detail": "Reduced risk contribution from installs/ratings/ads profile."
+        }
+      ],
+      "ml_signal": {
+        "label": "Likely Safe",
+        "confidence": 0.8,
+        "role": "primary",
+        "ml_risk_score": 13.0,
+        "note": "Heuristic from Play Store metadata (40% weight); no APK binary was scanned."
+      }
+    },
+    "recommendation": [
+      "\u2705 This application appears safe to install"
+    ],
+    "verdict_summary": "Final risk: Lower from combined signals. AI assessment (40%) plus supporting analysis (60%).",
+    "scanner_status": {
+      "virustotal": "enabled",
+      "hybrid_analysis": "enabled",
+      "metadefender": "enabled"
+    }
+  },
+  "985f5181d48bb6bafd54083a048b391271e0ab28385881cc41294fb01a222762": {
+    "status": "success",
+    "metadata": {
+      "file_name": "F-Droid.apk",
+      "file_size": 12426276,
+      "file_size_readable": "11.85 MB",
+      "sha256": "985f5181d48bb6bafd54083a048b391271e0ab28385881cc41294fb01a222762",
+      "md5": "ec6a9a8560924bb833942a7c3256847a",
+      "scan_timestamp": "2026-04-07T02:38:06.931632",
+      "package_name": "org.fdroid.fdroid",
+      "version_name": "1.23.2"
+    },
+    "manifest": {
+      "package_name": "org.fdroid.fdroid",
+      "permissions_count": 28
+    },
+    "ml_detection": {
+      "label": "Benign",
+      "confidence": 0.7389352321624756,
+      "raw_score": 0.2610647678375244,
+      "malware_family": null
+    },
+    "permission_analysis": {
+      "total_count": 28,
+      "critical": [
+        {
+          "permission": "android.permission.REQUEST_INSTALL_PACKAGES",
+          "description": "Install apps",
+          "risk": "Can install additional malware"
+        }
+      ],
+      "high": [
+        {
+          "permission": "android.permission.CAMERA",
+          "description": "Access camera",
+          "risk": "Can take photos/videos without consent"
+        }
+      ],
+      "medium": [
+        {
+          "permission": "android.permission.RECEIVE_BOOT_COMPLETED",
+          "description": "Run at startup",
+          "risk": "Can run automatically when device boots"
+        },
+        {
+          "permission": "android.permission.READ_EXTERNAL_STORAGE",
+          "description": "Read storage",
+          "risk": "Can access files on device"
+        },
+        {
+          "permission": "android.permission.WRITE_EXTERNAL_STORAGE",
+          "description": "Write storage",
+          "risk": "Can modify files on device"
+        }
+      ],
+      "low": [
+        {
+          "permission": "android.permission.INTERNET",
+          "description": "Internet access",
+          "risk": "Can send data to remote servers"
+        }
+      ],
+      "unknown": [
+        {
+          "permission": "android.permission.ACCESS_NETWORK_STATE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.ACCESS_WIFI_STATE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.CHANGE_NETWORK_STATE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.CHANGE_WIFI_STATE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.FOREGROUND_SERVICE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.BLUETOOTH",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.BLUETOOTH_ADMIN",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.BLUETOOTH_CONNECT",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.BLUETOOTH_SCAN",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.MANAGE_EXTERNAL_STORAGE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.WRITE_SETTINGS",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.USB_PERMISSION",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.WAKE_LOCK",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.REQUEST_DELETE_PACKAGES",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.NFC",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.QUERY_ALL_PACKAGES",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.POST_NOTIFICATIONS",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.ENFORCE_UPDATE_OWNERSHIP",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "org.fdroid.fdroid.permission.UPDATE_REPOS",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "org.fdroid.fdroid.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        }
+      ],
+      "suspicious_combos": [
+        {
+          "threat": "Dropper",
+          "description": "Can download and install additional malware",
+          "permissions": [
+            "android.permission.REQUEST_INSTALL_PACKAGES",
+            "android.permission.INTERNET"
+          ]
+        }
+      ],
+      "risk_score": 100
+    },
+    "certificate": {
+      "signed": true,
+      "issuer": null,
+      "subject": null,
+      "valid_from": null,
+      "valid_to": null,
+      "fingerprint_sha256": "09c3d505d7d05eaa16b12d12d431e89ad8b377889b2bac0ae00d380855949029",
+      "debug_signed": false
+    },
+    "virustotal": {
+      "engine": "VirusTotal",
+      "found": true,
+      "malicious": 0,
+      "suspicious": 0,
+      "undetected": 67,
+      "total_engines": 76,
+      "detection_ratio": "0/76"
+    },
+    "multi_engine_results": [
+      {
+        "engine": "VirusTotal",
+        "found": true,
+        "malicious": 0,
+        "suspicious": 0,
+        "undetected": 67,
+        "total_engines": 76,
+        "detection_ratio": "0/76"
+      },
+      {
+        "engine": "Hybrid Analysis",
+        "error": "API error: 400"
+      },
+      {
+        "engine": "MetaDefender",
+        "error": "API error: 401"
+      }
+    ],
+    "device_info": {
+      "is_rooted": false,
+      "device_model": "OnePlus CPH2467",
+      "android_version": "15"
+    },
+    "overall_score": 25,
+    "threat_level": "critical",
+    "final_verdict": {
+      "level": "critical",
+      "risk_score": 51,
+      "safety_score": 25,
+      "reasons": [
+        {
+          "code": "ML_PRIMARY",
+          "label": "AI risk assessment",
+          "detail": "Model: Benign \u2192 normalized risk 14/100 (40% of aggregate)."
+        },
+        {
+          "code": "AGGREGATE",
+          "label": "Combined risk",
+          "detail": "Final risk 51/100 = 40%\u00d7AI + 60%\u00d7supporting (supporting raw 76/100)."
+        },
+        {
+          "code": "PERMISSION_RISK",
+          "label": "Permission & pattern risk",
+          "detail": "Catalog + combo score 100/100."
+        },
+        {
+          "code": "UNKNOWN_PERMISSIONS",
+          "label": "Unreviewed permissions",
+          "detail": "22 permission(s) outside our risk catalog."
+        }
+      ],
+      "ml_signal": {
+        "label": "Benign",
+        "confidence": 0.7389352321624756,
+        "role": "primary",
+        "ml_risk_score": 13.9,
+        "note": "Primary AI signal (40% weight in the final risk score)."
+      }
+    },
+    "recommendation": [
+      "\u26a0\ufe0f DO NOT INSTALL - High malware probability detected",
+      "\ud83d\udea8 Dropper: Can download and install additional malware",
+      "\ud83d\udd34 1 critical permission(s) requested"
+    ],
+    "verdict_summary": "Final risk: CRITICAL \u2014 do not install. 22 permission(s) not in our catalog. Based on AI assessment (40%) plus supporting signals (60%); critical overrides apply.",
+    "scanner_status": {
+      "virustotal": "enabled",
+      "hybrid_analysis": "enabled",
+      "metadefender": "enabled"
+    },
+    "forced_rescan": false
+  },
+  "5b7248065a2149784c9145b53ffe9e465023f9d0627badb9aef529a2a82da3d4": {
+    "status": "success",
+    "metadata": {
+      "file_name": "Words_Episode_2.8_APKPure.apk",
+      "file_size": 12723467,
+      "file_size_readable": "12.13 MB",
+      "sha256": "5b7248065a2149784c9145b53ffe9e465023f9d0627badb9aef529a2a82da3d4",
+      "md5": "c6ec8c09d3d51e95e2df3cad99c9ba5b",
+      "scan_timestamp": "2026-04-07T02:44:45.524321",
+      "package_name": "com.escape.puzzle.prison.bank.steal.money.fun",
+      "version_name": "2.8"
+    },
+    "manifest": {
+      "package_name": "com.escape.puzzle.prison.bank.steal.money.fun",
+      "permissions_count": 10
+    },
+    "ml_detection": {
+      "label": "Benign",
+      "confidence": 0.6938915252685547,
+      "raw_score": 0.3061084747314453,
+      "malware_family": null
+    },
+    "permission_analysis": {
+      "total_count": 10,
+      "critical": [],
+      "high": [],
+      "medium": [],
+      "low": [
+        {
+          "permission": "android.permission.INTERNET",
+          "description": "Internet access",
+          "risk": "Can send data to remote servers"
+        }
+      ],
+      "unknown": [
+        {
+          "permission": "android.permission.ACCESS_NETWORK_STATE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "com.android.vending.BILLING",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "com.google.android.gms.permission.AD_ID",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.ACCESS_ADSERVICES_TOPICS",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.ACCESS_ADSERVICES_ATTRIBUTION",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.ACCESS_ADSERVICES_AD_ID",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.WAKE_LOCK",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.FOREGROUND_SERVICE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "com.escape.puzzle.prison.bank.steal.money.fun.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+          "description": "App-defined custom permission \u2014 scope depends on the developer",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        }
+      ],
+      "suspicious_combos": [],
+      "risk_score": 19
+    },
+    "certificate": {
+      "signed": true,
+      "issuer": null,
+      "subject": null,
+      "valid_from": null,
+      "valid_to": null,
+      "fingerprint_sha256": "c7412ff6bc43c9e02ae95f1bbd183cda75338e1ca92855db947de32d6bb42202",
+      "debug_signed": false
+    },
+    "virustotal": {
+      "engine": "VirusTotal",
+      "found": true,
+      "malicious": 1,
+      "suspicious": 0,
+      "undetected": 66,
+      "total_engines": 76,
+      "detection_ratio": "1/76"
+    },
+    "multi_engine_results": [
+      {
+        "engine": "VirusTotal",
+        "found": true,
+        "malicious": 1,
+        "suspicious": 0,
+        "undetected": 66,
+        "total_engines": 76,
+        "detection_ratio": "1/76"
+      },
+      {
+        "engine": "Hybrid Analysis",
+        "error": "API error: 400"
+      },
+      {
+        "engine": "MetaDefender",
+        "error": "API error: 401"
+      }
+    ],
+    "device_info": {
+      "is_rooted": false,
+      "device_model": "OnePlus CPH2467",
+      "android_version": "15"
+    },
+    "overall_score": 63,
+    "threat_level": "medium",
+    "final_verdict": {
+      "level": "medium",
+      "risk_score": 37,
+      "safety_score": 63,
+      "reasons": [
+        {
+          "code": "ML_PRIMARY",
+          "label": "AI risk assessment",
+          "detail": "Model: Benign \u2192 normalized risk 15/100 (40% of aggregate)."
+        },
+        {
+          "code": "AGGREGATE",
+          "label": "Combined risk",
+          "detail": "Final risk 37/100 = 40%\u00d7AI + 60%\u00d7supporting (supporting raw 52/100)."
+        },
+        {
+          "code": "UNKNOWN_PERMISSIONS",
+          "label": "Unreviewed permissions",
+          "detail": "9 permission(s) outside our risk catalog."
+        },
+        {
+          "code": "EXTERNAL_VIRUSTOTAL",
+          "label": "VirusTotal detections",
+          "detail": "1 engine(s) flagged this sample (1/76)."
+        }
+      ],
+      "ml_signal": {
+        "label": "Benign",
+        "confidence": 0.6938915252685547,
+        "role": "primary",
+        "ml_risk_score": 14.6,
+        "note": "Primary AI signal (40% weight in the final risk score)."
+      }
+    },
+    "recommendation": [
+      "\u26a0\ufe0f Review permissions carefully before installing"
+    ],
+    "verdict_summary": "Final risk: ELEVATED \u2014 review carefully. 9 permission(s) not in our catalog. AI assessment combined with supporting signals.",
+    "scanner_status": {
+      "virustotal": "enabled",
+      "hybrid_analysis": "enabled",
+      "metadefender": "enabled"
+    },
+    "forced_rescan": false
+  },
+  "198afcd43b16b5c7b404967f6c3e5110dbdc20ed277309aa1da989b6809d82c5": {
+    "status": "success",
+    "metadata": {
+      "file_name": "Ram_Expander-1.4.apk",
+      "file_size": 3308146,
+      "file_size_readable": "3.15 MB",
+      "sha256": "198afcd43b16b5c7b404967f6c3e5110dbdc20ed277309aa1da989b6809d82c5",
+      "md5": "689dde6e31ae193033edc1c5100dfa19",
+      "scan_timestamp": "2026-04-07T02:46:47.801321",
+      "package_name": "com.ramexpander",
+      "version_name": "1.4"
+    },
+    "manifest": {
+      "package_name": "com.ramexpander",
+      "permissions_count": 13
+    },
+    "ml_detection": {
+      "label": "Benign",
+      "confidence": 0.6553621292114258,
+      "raw_score": 0.3446379005908966,
+      "malware_family": null
+    },
+    "permission_analysis": {
+      "total_count": 13,
+      "critical": [],
+      "high": [],
+      "medium": [
+        {
+          "permission": "android.permission.WRITE_EXTERNAL_STORAGE",
+          "description": "Write storage",
+          "risk": "Can modify files on device"
+        },
+        {
+          "permission": "android.permission.RECEIVE_BOOT_COMPLETED",
+          "description": "Run at startup",
+          "risk": "Can run automatically when device boots"
+        },
+        {
+          "permission": "android.permission.READ_PHONE_STATE",
+          "description": "Read phone state",
+          "risk": "Can access device identifiers"
+        }
+      ],
+      "low": [
+        {
+          "permission": "android.permission.INTERNET",
+          "description": "Internet access",
+          "risk": "Can send data to remote servers"
+        }
+      ],
+      "unknown": [
+        {
+          "permission": "android.permission.PACKAGE_USAGE_STATS",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.READ_LOGS",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.VIBRATE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.GET_PACKAGE_SIZE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.CLEAR_APP_CACHE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.ACCESS_NETWORK_STATE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.ACCESS_WIFI_STATE",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.GET_TASKS",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        },
+        {
+          "permission": "android.permission.KILL_BACKGROUND_PROCESSES",
+          "description": "Not in our risk catalog (may be new API level or vendor-specific)",
+          "risk": "Unreviewed \u2014 treat cautiously; may be new or uncommon on your Android version"
+        }
+      ],
+      "suspicious_combos": [],
+      "risk_score": 34
+    },
+    "certificate": {
+      "signed": true,
+      "issuer": null,
+      "subject": null,
+      "valid_from": null,
+      "valid_to": null,
+      "fingerprint_sha256": "de521974ea252ca49703fdc999b5579aa3f690c1046593ecde6fb9ba5b103b86",
+      "debug_signed": false
+    },
+    "virustotal": {
+      "engine": "VirusTotal",
+      "found": true,
+      "malicious": 0,
+      "suspicious": 0,
+      "undetected": 60,
+      "total_engines": 76,
+      "detection_ratio": "0/76"
+    },
+    "multi_engine_results": [
+      {
+        "engine": "VirusTotal",
+        "found": true,
+        "malicious": 0,
+        "suspicious": 0,
+        "undetected": 60,
+        "total_engines": 76,
+        "detection_ratio": "0/76"
+      },
+      {
+        "engine": "Hybrid Analysis",
+        "error": "API error: 400"
+      },
+      {
+        "engine": "MetaDefender",
+        "error": "API error: 401"
+      }
+    ],
+    "device_info": {
+      "is_rooted": false,
+      "device_model": "OnePlus CPH2467",
+      "android_version": "15"
+    },
+    "overall_score": 65,
+    "threat_level": "medium",
+    "final_verdict": {
+      "level": "medium",
+      "risk_score": 33,
+      "safety_score": 65,
+      "reasons": [
+        {
+          "code": "ML_PRIMARY",
+          "label": "AI risk assessment",
+          "detail": "Model: Benign \u2192 normalized risk 15/100 (40% of aggregate)."
+        },
+        {
+          "code": "AGGREGATE",
+          "label": "Combined risk",
+          "detail": "Final risk 33/100 = 40%\u00d7AI + 60%\u00d7supporting (supporting raw 44/100)."
+        },
+        {
+          "code": "UNKNOWN_PERMISSIONS",
+          "label": "Unreviewed permissions",
+          "detail": "9 permission(s) outside our risk catalog."
+        }
+      ],
+      "ml_signal": {
+        "label": "Benign",
+        "confidence": 0.6553621292114258,
+        "role": "primary",
+        "ml_risk_score": 15.2,
+        "note": "Primary AI signal (40% weight in the final risk score)."
+      }
+    },
+    "recommendation": [
+      "\u26a0\ufe0f Review permissions carefully before installing"
+    ],
+    "verdict_summary": "Final risk: ELEVATED \u2014 review carefully. 9 permission(s) not in our catalog. AI assessment combined with supporting signals.",
+    "scanner_status": {
+      "virustotal": "enabled",
+      "hybrid_analysis": "enabled",
+      "metadefender": "enabled"
+    },
+    "forced_rescan": false
   }
 }
